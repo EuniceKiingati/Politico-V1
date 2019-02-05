@@ -78,8 +78,26 @@ def create_app():
             response.status_code = 201
             return response
 
-   @app.route('/api/v1/parties/<int:party_id>', methods=['GET'])
+    @app.route('/api/v1/parties/<int:party_id>', methods=['GET', 'DELETE'])
     def single_political_party(party_id):
+        if request.method == 'DELETE':
+            for party in political_parties:
+                if party['id'] == party_id:
+                    political_parties.remove(party)
+
+                    response = jsonify({
+                        "message": "Pollitical parties deleted successfully",
+                        "status": 200,
+                        "data": political_parties
+                    })
+                    response.status_code = 200
+                    return response
+            response = jsonify({
+                "message": "invalid id",
+                "status": 404,
+            })
+            response.status_code = 404
+            return response
         if request.method == 'GET':
             for party in political_parties:
                 if party['id'] == party_id:
