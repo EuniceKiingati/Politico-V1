@@ -78,4 +78,23 @@ def create_app():
             response.status_code = 201
             return response
 
+   @app.route('/api/v1/parties/<int:party_id>', methods=['GET'])
+    def single_political_party(party_id):
+        if request.method == 'GET':
+            for party in political_parties:
+                if party['id'] == party_id:
+                    response = jsonify({
+                        "status": 200,
+                        "data": party
+                    })
+                    response.status_code = 200
+                    return response
+            response = jsonify({
+                "message": "invalid id",
+                "status": 404,
+            })
+            response.status_code = 404
+            return response
+    
+
     return app
