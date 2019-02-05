@@ -5,6 +5,8 @@ import json
 def create_app():
     app = Flask(__name__)
     users = []
+    political_parties = []
+    
 
     @app.route('/api/v1/users', methods=['POST'])
     def sign_up():
@@ -45,5 +47,30 @@ def create_app():
         })
         response.status_code = 404
         return response
+
+    @app.route('/api/v1/parties', methods=['POST'])
+    def create_party():
+        
+        if request.method == 'POST':
+            data = request.get_json()  # getting a json object from request
+            party_name = data['party_name']
+            hqaddress = data['hqaddress']
+            logoUrl = data['logoUrl']
+            new_party = {}
+            new_party["id"] = len(political_parties) + 1
+            new_party["name"] = party_name
+            new_party["hqadress"] = hqaddress
+            new_party["logoUrl"] = logoUrl
+            political_parties.append(new_party)
+
+            response = jsonify({
+                "message": "party created successfully",
+                "status": 201,
+                "data": political_parties
+            })
+            response.status_code = 201
+            return response
+
+    
 
     return app
