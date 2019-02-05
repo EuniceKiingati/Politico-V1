@@ -48,9 +48,16 @@ def create_app():
         response.status_code = 404
         return response
 
-    @app.route('/api/v1/parties', methods=['POST'])
+    @app.route('/api/v1/parties', methods=['POST', 'GET'])
     def create_party():
-        
+        if request.method == 'GET':
+            response = jsonify({
+                "message": "Pollitical parties retrieved successfully",
+                "status": 200,
+                "data": political_parties
+            })
+            response.status_code = 200
+            return response
         if request.method == 'POST':
             data = request.get_json()  # getting a json object from request
             party_name = data['party_name']
@@ -70,7 +77,5 @@ def create_app():
             })
             response.status_code = 201
             return response
-
-    
 
     return app
