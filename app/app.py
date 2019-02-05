@@ -7,7 +7,6 @@ def create_app():
     users = []
     political_parties = []
     political_offices = []
-    
 
     @app.route('/api/v1/users', methods=['POST'])
     def sign_up():
@@ -167,6 +166,23 @@ def create_app():
             })
             response.status_code = 201
             return response
-   
+
+    @app.route('/api/v1/offices/<int:office_id>', methods=['GET'])
+    def single_political_office(office_id):
+        for office in political_offices:
+            
+            if office['id'] == office_id:
+                response = jsonify({
+                    "status": 200,
+                    "data": office
+                })
+                response.status_code = 200
+                return response
+        response = jsonify({
+                "message": "invalid id",
+                "status": 404,
+            })
+        response.status_code = 404
+        return response
 
     return app
