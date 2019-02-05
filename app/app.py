@@ -6,6 +6,7 @@ def create_app():
     app = Flask(__name__)
     users = []
     political_parties = []
+    political_offices = []
     
 
     @app.route('/api/v1/users', methods=['POST'])
@@ -136,6 +137,28 @@ def create_app():
         })
         response.status_code = 404
         return response
-    
+
+    @app.route('/api/v1/offices', methods=['POST'])
+    def create_office():
+        if request.method == 'POST':
+            data = request.get_json()  # getting a json object from request
+            office_name = data['office_name']
+            office_type = data['type']
+
+            new_office = {}
+            new_office["id"] = len(political_offices) + 1
+            new_office["name"] = office_name
+            new_office["type"] = office_type
+
+            political_offices.append(new_office)
+
+            response = jsonify({
+                "message": "office created successfully",
+                "status": 201,
+                "data": political_offices
+            })
+            response.status_code = 201
+            return response
+   
 
     return app
