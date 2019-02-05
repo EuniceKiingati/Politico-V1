@@ -95,6 +95,29 @@ def create_app():
             })
             response.status_code = 404
             return response
+
+    @app.route('/api/v1/parties/<int:party_id>/name', methods=['PATCH'])
+    def edit_party_name(party_id):
+
+        data = request.get_json()  # data being passed
+        party_name = data['party_name']
+        for party in political_parties:
+            if party['id'] == party_id:
+                party['name'] = party_name
+
+                response = jsonify({
+                    "message": "Pollitical party updated successfully",
+                    "status": 200,
+                    "data": party
+                })
+                response.status_code = 200
+                return response
+        response = jsonify({
+            "message": "invalid id",
+            "status": 404
+        })
+        response.status_code = 404
+        return response
     
 
     return app
