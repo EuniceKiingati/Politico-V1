@@ -24,4 +24,26 @@ def create_app():
         })
         response.status_code = 201
         return response
+
+    @app.route('/api/v1/users/login', methods=['POST'])
+    def login():
+        data = request.get_json()  # getting a json object from request
+        username = data['username']  # gets the value that the key represents
+        password = data['password']
+        for user in users:
+            if user['username'] == username and user['password'] == password:  # to loo
+                response = jsonify({
+                    "message": "User login successful",
+                    "status": 200,
+                    "data": user
+                })
+                response.status_code = 200
+                return response
+        response = jsonify({
+            "message": "User login failed, Check your credentials",
+            "status": 404,  # not  found
+        })
+        response.status_code = 404
+        return response
+
     return app
