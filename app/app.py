@@ -138,8 +138,16 @@ def create_app():
         response.status_code = 404
         return response
 
-    @app.route('/api/v1/offices', methods=['POST'])
+    @app.route('/api/v1/offices', methods=['GET', 'POST'])
     def create_office():
+        if request.method == 'GET':
+            response = jsonify({
+                "message": "Pollitical office retrieved successfully",
+                "status": 200,
+                "data": political_offices
+            })
+            response.status_code = 200
+            return response
         if request.method == 'POST':
             data = request.get_json()  # getting a json object from request
             office_name = data['office_name']
