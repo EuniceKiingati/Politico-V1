@@ -1,0 +1,12 @@
+        self.PartyInfo = json.dumps({
+            "id": "1",
+            "name": "samplename",
+            "hqaddress": "sampleaddress",
+            "logoUrl": "samplelogoUrl"
+        })
+        self.OfficeInfo = json.dumps({
+            "id": "1",
+            "type": "sampletype",
+            "name": "samplename",
+
+        })

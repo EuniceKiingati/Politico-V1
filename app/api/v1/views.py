@@ -1,9 +1,9 @@
-from flask import Flask, jsonify, request, abort
+from flask import Flask, jsonify, request, abort, render_template
 import json
 from .utils.user_utils import UserValidation
 from .utils.party_utils import ValidateParty
 from .utils.office_utils import ValidateOffice
-from .models import (users, SaveUser, political_parties,
+from .models import (users, User, political_parties,
                      Party, political_offices, Office)
 
 
@@ -19,12 +19,16 @@ def bad_request(message):
 def create_app():
     app = Flask(__name__)
 
+    @app.route('/', methods=['GET'])
+    def home():
+        return render_template('index.html')
+
     @app.route('/api/v1/users', methods=['POST'])
     def sign_up():
         data = request.get_json()
         validate = UserValidation(data)
         validate.validate_signup()
-        new_user = SaveUser(data)
+        new_user =User(data)
         new_user.save()
 
         response = jsonify({
@@ -34,6 +38,7 @@ def create_app():
         })
         response.status_code = 201
         return response
+    
 
     @app.route('/api/v1/users/login', methods=['POST'])
     def login():
@@ -66,8 +71,8 @@ def create_app():
         response.status_code = 200
         return response
 
-    @app.route('/api/v1/parties/<int:party_id>', methods=['GET'])
-    def single_political_party(party_id):
+    @app.route('/api/v1/parties/<int:party_id>', methods=['DELETE'])
+    def delete_political_party(party_id):
         for party in political_parties:
             if party['id'] == party_id:
                 political_parties.remove(party)
@@ -86,8 +91,8 @@ def create_app():
         response.status_code = 404
         return response
 
-    @app.route('/api/v1/parties/<int:party_id>', methods=['DELETE'])
-    def delete_political_party(party_id):
+    @app.route('/api/v1/parties/<int:party_id>', methods=['GET'])
+    def single_political_party(party_id):
         for party in political_parties:
             if party['id'] == party_id:
                 response = jsonify({
