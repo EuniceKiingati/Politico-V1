@@ -1,7 +1,7 @@
 
 # Politico
-A system for managing elections
-[![Maintainability](https://api.codeclimate.com/v1/badges/56272a0356f0cfdaa076/maintainability)](https://codeclimate.com/github/EuniceKiingati/Politico-V1/maintainability)  
+A system for managing elections  
+[![Maintainability](https://api.codeclimate.com/v1/badges/56272a0356f0cfdaa076/maintainability)](https://codeclimate.com/github/EuniceKiingati/Politico-V1/maintainability)
 [![Coverage Status](https://coveralls.io/repos/github/EuniceKiingati/Politico-V1/badge.svg?branch=ch-test-office-v1-163807667)](https://coveralls.io/github/EuniceKiingati/Politico-V1?branch=ch-test-office-v1-163807667)
 
 Heroku link  
