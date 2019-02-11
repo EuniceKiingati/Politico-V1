@@ -2,7 +2,7 @@ users = []
 political_parties = []
 political_offices = []
 
-class SaveUser():
+class User():
     def __init__(self, data):
         self.data = data
 
