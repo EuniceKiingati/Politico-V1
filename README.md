@@ -37,11 +37,11 @@ If you ran the application you can test the various api end points using postman
 |-------|-------------|----------|
 |post /api/v1/auth/signup|create a user|user information|
 |post /api/v1/auth/login | login |requires authentication |
-|get /api/v1/parties| get all the parties| |
+|get /api/v1/parties| get all the parties|party data|
 |get /api/v1/parties/</partyID>|return a single party| party id|
 |post /api/v1/parties | create a new party entry| party data|
 |post /api/v1/offices | create a new office| party id|
-|get /api/v1/offices | get all offices entries||
+|get /api/v1/offices | get all offices entries|party data|
 |get/api/v1/offices/<officeID>|get a single office entry| office id| 
 |delete /api/v1/parties/<partyID> | delete a party| party id|
 |put /api/v1/parties/<partyID> | update a parties|party id, party data|
