@@ -1,10 +1,8 @@
 
 # Politico
 A system for managing elections
-
-[![Build Status](https://travis-ci.org/EuniceKiingati/Politico-V1)]
-(https://travis-ci.org/EuniceKiingati/Politico-V1)
-[![Coverage Status](https://coveralls.io/repos/248658/builds)](https://coveralls.io/github/EuniceKiingati/Politico-V1)]
+[![Maintainability](https://api.codeclimate.com/v1/badges/56272a0356f0cfdaa076/maintainability)](https://codeclimate.com/github/EuniceKiingati/Politico-V1/maintainability)  
+[![Coverage Status](https://coveralls.io/repos/github/EuniceKiingati/Politico-V1/badge.svg?branch=ch-test-office-v1-163807667)](https://coveralls.io/github/EuniceKiingati/Politico-V1?branch=ch-test-office-v1-163807667)
 
 Heroku link  
 https://dashboard.heroku.com/apps/eunice-politico-v1
