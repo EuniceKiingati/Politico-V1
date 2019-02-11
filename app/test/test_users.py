@@ -26,13 +26,11 @@ class TestUser(BaseTest):
         user_info = json.dumps({
             "username": "sampleusername",
             "email": "sampleemail",
-            "password": "Yunis",
-
-            "username": "sampleusername",
-            "email": "sampleemail",
-            "password": "Yunis",
+            "password": "Yunis5@fgc"
 
         })
+        self.client().post('/api/v1/users', data=user_info,
+                                      content_type='application/json')
         response = self.client().post('/api/v1/users', data=user_info,
                                       content_type='application/json')
 
@@ -102,7 +100,7 @@ class TestUser(BaseTest):
         user_info = json.dumps({
             "username": "sampleusername",
             "email": "sampleemail",
-            "password": "2",
+            "password": 2,
 
         })
         response = self.client().post('/api/v1/users', data=user_info,
@@ -158,7 +156,3 @@ class TestUser(BaseTest):
                                       content_type='application/json')
 
         self.assertEqual(response.status_code, 400)
-
-
-if __name__ == '__main__':
-    unittest.main()
