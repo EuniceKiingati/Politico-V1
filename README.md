@@ -20,7 +20,7 @@ https://dashboard.heroku.com/apps/eunice-politico-v1
 
 1. Install git  
 1. clone this repo  
-`$ git@github.com:Hesbon5600/Store-Manager-V1.git"`   
+`$ git@github.com:EuniceKiingati/Politico-V1/.git"`   
   
 1. install requirements      
 `$ pip install -r requirements.txt`   
